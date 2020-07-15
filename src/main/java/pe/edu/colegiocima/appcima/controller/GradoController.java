@@ -6,6 +6,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import pe.edu.colegiocima.appcima.models.entity.Grado;
 import pe.edu.colegiocima.appcima.service.GradoService;
 
@@ -17,17 +21,22 @@ import java.util.Objects;
 
 @RestController(value = "grado")
 @RequestMapping("/grado")
+@Api(tags = "API Grado", description = "API del CRUD Grado")
 public class GradoController {
     @Autowired
     private GradoService service;
 
     @GetMapping()
+    @ApiOperation(value = "Lista todos los grados")
     public ResponseEntity<?> listar(){
         return ResponseEntity.ok(service.findAll());
     }
 
     @PostMapping()
-    public ResponseEntity<?> crear(@Valid @RequestBody Grado grado, BindingResult result){
+    @ApiOperation(value = "Crear un nuevo registro del grado academico")
+    public ResponseEntity<?> crear(@Valid @RequestBody 
+    		@ApiParam(value = "Estructura del modelo Grado Academico")
+    		Grado grado, BindingResult result){
         if(result.hasErrors()){
             return this.validar(result);
         }
@@ -36,7 +45,12 @@ public class GradoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> editar(@Valid @RequestBody Grado grado, BindingResult result, @PathVariable Long id){
+    @ApiOperation(value = "Editar un registro del grado academico")
+    public ResponseEntity<?> editar(@Valid @RequestBody 
+    		@ApiParam(value = "Estructura del modelo Grado Academico")
+    		Grado grado, BindingResult result, 
+    		@ApiParam(value = "Identificador del Grado Academico")
+    		@PathVariable Long id){
        
     	if(result.hasErrors()) {
     		return this.validar(result);
@@ -59,7 +73,10 @@ public class GradoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> eliminar(@PathVariable Long id){
+@ApiOperation(value = "Elimina un registro del Grado Academico")
+    public ResponseEntity<?> eliminar(
+    		@ApiParam(value = "Identificador del Grado Academico", required = true, example = "16")
+    		@PathVariable Long id){
         service.deleteById(id);
         return ResponseEntity.noContent().build();
     }
