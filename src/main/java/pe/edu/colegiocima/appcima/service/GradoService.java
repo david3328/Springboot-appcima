@@ -6,4 +6,5 @@ public interface GradoService {
     public Iterable<Grado> findAll();
     public void deleteById(Long id);
     public Grado findById(Long id);
+    public Grado save(Grado grado);
 }

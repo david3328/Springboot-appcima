@@ -30,4 +30,8 @@ public class GradoServiceImpl implements GradoService {
     public Grado findById(Long id) {
         return repository.findById(id).orElse(null);
     }
+
+    @Override
+    @Transactional
+    public Grado save(Grado grado) { return repository.save(grado); }
 }

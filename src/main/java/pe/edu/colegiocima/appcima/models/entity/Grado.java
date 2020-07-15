@@ -6,7 +6,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="grado")
-public class Grado {
+public class Grado{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,6 +24,7 @@ public class Grado {
     private int edad;
 
     @Column(name = "circuloestudio")
+    @NotNull(message = "Debe existir un valor para círculo de estudio")
     private boolean circuloEstudio;
 
     public Grado() {}
