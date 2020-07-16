@@ -31,6 +31,8 @@ public class AppcimaApplication implements CommandLineRunner{
 			Short idgrado = gradoRepository.queryInsertarDML("NATIVE", (short)1,(short) 26, 12, true);	
 			System.out.println("ID: " + idgrado);
 		}*/
+		
+	/*	
 		Grado grado = new Grado();
 		grado.setDescripcion("DAO-TEST");
 		grado.setIdNivelColegio(1);
@@ -44,7 +46,11 @@ public class AppcimaApplication implements CommandLineRunner{
 			Short idgrado = gradoDAO.insertar(grado);
 			System.out.println("ID: " +idgrado);
 		}	
+	*/
 		
+		Boolean idgrado = gradoRepository.editar("D-TEST-1", (short)1,(short) 26, 13, true, (short) 122);	
+		
+		System.out.println("ID: "+idgrado);
 		
 	}
 
