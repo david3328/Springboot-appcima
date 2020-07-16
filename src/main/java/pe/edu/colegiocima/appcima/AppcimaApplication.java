@@ -48,9 +48,26 @@ public class AppcimaApplication implements CommandLineRunner{
 		}	
 	*/
 		
+	/*	
 		Boolean idgrado = gradoRepository.editar("D-TEST-1", (short)1,(short) 26, 13, true, (short) 122);	
 		
-		System.out.println("ID: "+idgrado);
+		System.out.println("ID: "+idgrado); 
+		
+		*/
+		
+		Grado grado = new Grado();
+		grado.setId(122L);
+		grado.setDescripcion("BAQUITA");
+		grado.setIdNivelColegio(1);
+		grado.setIdGradoAnterior(26);
+		grado.setEdad(12);
+		grado.setCirculoEstudio(true);
+		
+		Boolean idgrado = gradoDAO.editar(grado);	
+		
+		System.out.println("ID: "+idgrado); 
+		
+	
 		
 	}
 
