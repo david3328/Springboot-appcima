@@ -16,4 +16,7 @@ public interface GradoRepository extends CrudRepository<Grado,Long> {
 	
 	@Procedure(procedureName = "f_insertagrado")
 	public Short insertar(String vdescripcion, Short vidnivelcolegio, Short vidgrad_ant, Integer vedad, Boolean vactivo);
+	
+	@Query(value = "select * from f_insertagrado(?1,?2,?3,?4,?5)",nativeQuery=true)
+	public Short queryInsertarDML(String vdescripcion, Short vidnivelcolegio, Short vidgrad_ant, Integer vedad, Boolean vactivo);
 }
