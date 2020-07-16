@@ -7,4 +7,5 @@ public interface GradoService {
     public void deleteById(Long id);
     public Grado findById(Long id);
     public Grado save(Grado grado);
+    public Iterable<Grado> findByIdNivelColegioOrderByDescripcion(Integer idNivelColegio);
 }

@@ -34,4 +34,9 @@ public class GradoServiceImpl implements GradoService {
     @Override
     @Transactional
     public Grado save(Grado grado) { return repository.save(grado); }
+
+	@Override
+	public Iterable<Grado> findByIdNivelColegioOrderByDescripcion(Integer idNivelColegio) {
+		return repository.findByIdNivelColegioOrderByDescripcion(idNivelColegio);
+	}
 }

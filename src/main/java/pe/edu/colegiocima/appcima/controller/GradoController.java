@@ -26,11 +26,18 @@ public class GradoController {
     @Autowired
     private GradoService service;
 
+    @GetMapping("/nivel-colegio/{id}")    
+    @ApiOperation(value = "Listar grados por Nivel de Colegio")
+    public ResponseEntity<?> listarPorNivelColegio(@PathVariable Integer id){
+    	return ResponseEntity.ok(service.findByIdNivelColegioOrderByDescripcion(id));
+    }
+    
     @GetMapping()
     @ApiOperation(value = "Lista todos los grados")
     public ResponseEntity<?> listar(){
         return ResponseEntity.ok(service.findAll());
     }
+    
 
     @PostMapping()
     @ApiOperation(value = "Crear un nuevo registro del grado academico")
