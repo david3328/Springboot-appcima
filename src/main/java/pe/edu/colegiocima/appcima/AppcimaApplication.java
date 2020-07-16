@@ -8,6 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import pe.edu.colegiocima.appcima.models.dao.GradoDAO;
+import pe.edu.colegiocima.appcima.models.entity.AnioLectivo;
 import pe.edu.colegiocima.appcima.models.entity.Grado;
 import pe.edu.colegiocima.appcima.models.repository.GradoRepository;
 
@@ -67,7 +68,7 @@ public class AppcimaApplication implements CommandLineRunner{
 		
 		System.out.println("ID: "+idgrado); 
 		
-	
+		AnioLectivo anioLectivo = new AnioLectivo();
 		
 	}
 
