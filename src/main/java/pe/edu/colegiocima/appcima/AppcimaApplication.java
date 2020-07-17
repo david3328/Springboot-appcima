@@ -31,9 +31,13 @@ public class AppcimaApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		List<AnioLectivo> lista = anioLectivoRepository.buscarPorActivo();
+		//List<AnioLectivo> lista = anioLectivoRepository.buscarPorActivo();
+
+
+
+		List<AnioLectivo> lista = anioLectivoRepository.findByActivoTrueOrderById();
 		for(AnioLectivo item:lista) {
-			System.out.println("ID: " + item.getId());
+			System.out.println("ID: " + item.getId() + " Descripcion: " + item.getDescripcion() + " Periodo: " + item.getPeriodo());
 		}
 		/*Grado g = gradoRepository.findByDescripcionAndIdNivelColegio("NATIVE", 1);
 		if(Objects.isNull(g)) {
