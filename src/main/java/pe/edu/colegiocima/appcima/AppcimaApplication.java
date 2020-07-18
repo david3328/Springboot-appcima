@@ -13,9 +13,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import pe.edu.colegiocima.appcima.models.dao.GradoDAO;
 import pe.edu.colegiocima.appcima.models.dto.AnioLectivoDTO;
 import pe.edu.colegiocima.appcima.models.dto.projection.AnioLectivoVista;
-import pe.edu.colegiocima.appcima.models.entity.AnioLectivo;
-import pe.edu.colegiocima.appcima.models.entity.Grado;
+import pe.edu.colegiocima.appcima.models.entity.*;
 import pe.edu.colegiocima.appcima.models.repository.AnioLectivoRepository;
+import pe.edu.colegiocima.appcima.models.repository.AreaAsignaturaRepository;
+import pe.edu.colegiocima.appcima.models.repository.AsignaturaRepository;
 import pe.edu.colegiocima.appcima.models.repository.GradoRepository;
 
 @SpringBootApplication
@@ -31,17 +32,37 @@ public class AppcimaApplication
 	@Autowired
 	private GradoDAO gradoDAO;
 
+	@Autowired
+	private AreaAsignaturaRepository repository;
+
+	@Autowired
+	private AsignaturaRepository asignaturaRepository;
+
     public static void main(String[] args) {
         SpringApplication.run(AppcimaApplication.class, args);
     }
 
 //	@Override
 	public void run(String... args) throws Exception {
-		Calendar calendar = new GregorianCalendar(2008,0,1);
-    	List<Object[]> lista = gradoRepository.buscarIdNivelGrado(calendar.getTime());
-		for (Object[] o: lista ) {
-			System.out.println("ID Colegio: "+o[0] + " ID Grado: " +o[1]);
-		}
+
+//    	Asignatura asignatura = asignaturaRepository.findById((short) 100).orElse(null);
+//		System.out.println("listo");
+
+//    	Iterable<AreaAsignatura> lista = repository.findAll();
+//    	lista.forEach((asignatura)-> {
+//			System.out.println("ID: " + asignatura.getId());
+//			AreaCurricular ac = Objects.nonNull(asignatura.getAreaCurricular()) ? asignatura.getAreaCurricular() : new AreaCurricular();
+//			System.out.println("Area Curricular: " + ac.getDescripcion());
+//		});
+
+//    	Iterable<AreaAsignatura> lista = repository.findAll();
+//		System.out.println("listo");
+
+//		Calendar calendar = new GregorianCalendar(2008,0,1);
+//    	List<Object[]> lista = gradoRepository.buscarIdNivelGrado(calendar.getTime());
+//		for (Object[] o: lista ) {
+//			System.out.println("ID Colegio: "+o[0] + " ID Grado: " +o[1]);
+//		}
 
 		//List<AnioLectivo> lista = anioLectivoRepository.buscarPorActivo();
 		//List<AnioLectivoVista> lista = anioLectivoRepository.findByActivoTrueOrderById();
