@@ -19,7 +19,9 @@ import pe.edu.colegiocima.appcima.models.repository.AnioLectivoRepository;
 import pe.edu.colegiocima.appcima.models.repository.GradoRepository;
 
 @SpringBootApplication
-public class AppcimaApplication implements CommandLineRunner{
+public class AppcimaApplication
+//		implements CommandLineRunner
+{
 	@Autowired
 	private GradoRepository gradoRepository;
 
@@ -33,7 +35,7 @@ public class AppcimaApplication implements CommandLineRunner{
         SpringApplication.run(AppcimaApplication.class, args);
     }
 
-	@Override
+//	@Override
 	public void run(String... args) throws Exception {
 		Calendar calendar = new GregorianCalendar(2008,0,1);
     	List<Object[]> lista = gradoRepository.buscarIdNivelGrado(calendar.getTime());
