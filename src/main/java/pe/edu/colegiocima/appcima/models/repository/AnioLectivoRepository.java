@@ -2,6 +2,7 @@ package pe.edu.colegiocima.appcima.models.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import pe.edu.colegiocima.appcima.models.dto.AnioLectivoDTO;
 import pe.edu.colegiocima.appcima.models.dto.projection.AnioLectivoVista;
 import pe.edu.colegiocima.appcima.models.entity.AnioLectivo;
 
@@ -12,4 +13,6 @@ public interface AnioLectivoRepository extends JpaRepository<AnioLectivo,Short> 
     public List<AnioLectivo> buscarPorActivo();
 
     public List<AnioLectivoVista> findByActivoTrueOrderById();
+
+    public List<AnioLectivoDTO> findByActivoTrueOrderByDescripcion();
 }

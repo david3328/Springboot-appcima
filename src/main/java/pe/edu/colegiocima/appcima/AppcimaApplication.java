@@ -9,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import pe.edu.colegiocima.appcima.models.dao.GradoDAO;
+import pe.edu.colegiocima.appcima.models.dto.AnioLectivoDTO;
 import pe.edu.colegiocima.appcima.models.dto.projection.AnioLectivoVista;
 import pe.edu.colegiocima.appcima.models.entity.AnioLectivo;
 import pe.edu.colegiocima.appcima.models.entity.Grado;
@@ -33,12 +34,12 @@ public class AppcimaApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		//List<AnioLectivo> lista = anioLectivoRepository.buscarPorActivo();
+		//List<AnioLectivoVista> lista = anioLectivoRepository.findByActivoTrueOrderById();
 
+		List<AnioLectivoDTO> lista = anioLectivoRepository.findByActivoTrueOrderByDescripcion();
 
-
-		List<AnioLectivoVista> lista = anioLectivoRepository.findByActivoTrueOrderById();
-		for(AnioLectivoVista item:lista) {
-			System.out.println("ID: " + item.getId() + " Descripcion: " + item.getDescripcion() + " Periodo: " + item.getPeriodo());
+		for(AnioLectivoDTO item:lista) {
+			System.out.println("ID: " + item.getId() + " Descripcion: " + item.getDescripcion() );
 		}
 		/*Grado g = gradoRepository.findByDescripcionAndIdNivelColegio("NATIVE", 1);
 		if(Objects.isNull(g)) {
