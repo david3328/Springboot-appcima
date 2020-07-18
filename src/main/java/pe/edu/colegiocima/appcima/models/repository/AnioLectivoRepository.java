@@ -15,4 +15,7 @@ public interface AnioLectivoRepository extends JpaRepository<AnioLectivo,Short> 
     public List<AnioLectivoVista> findByActivoTrueOrderById();
 
     public List<AnioLectivoDTO> findByActivoTrueOrderByDescripcion();
+
+    @Query("select new pe.edu.colegiocima.appcima.models.dto.AnioLectivoDTO(a.id,a.descripcion) " + " from AnioLectivo  a where a.activo = true order by a.id")
+    public List<AnioLectivoDTO> busquedaActivo();
 }

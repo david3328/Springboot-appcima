@@ -36,15 +36,17 @@ public class AppcimaApplication implements CommandLineRunner{
 		//List<AnioLectivo> lista = anioLectivoRepository.buscarPorActivo();
 		//List<AnioLectivoVista> lista = anioLectivoRepository.findByActivoTrueOrderById();
 
-		List<AnioLectivoDTO> lista = anioLectivoRepository.findByActivoTrueOrderByDescripcion();
+//		List<AnioLectivoDTO> lista = anioLectivoRepository.findByActivoTrueOrderByDescripcion();
+
+		List<AnioLectivoDTO> lista = anioLectivoRepository.busquedaActivo();
 
 		for(AnioLectivoDTO item:lista) {
 			System.out.println("ID: " + item.getId() + " Descripcion: " + item.getDescripcion() );
 		}
 		/*Grado g = gradoRepository.findByDescripcionAndIdNivelColegio("NATIVE", 1);
 		if(Objects.isNull(g)) {
-			//Short idgrado = gradoRepository.insertar("PRUEBA", (short)1,(short) 26, 12, true);	
-			Short idgrado = gradoRepository.queryInsertarDML("NATIVE", (short)1,(short) 26, 12, true);	
+			//Short idgrado = gradoRepository.insertar("PRUEBA", (short)1,(short) 26, 12, true);
+			Short idgrado = gradoRepository.queryInsertarDML("NATIVE", (short)1,(short) 26, 12, true);
 			System.out.println("ID: " + idgrado);
 		}*/
 		
