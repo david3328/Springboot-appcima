@@ -1,5 +1,7 @@
 package pe.edu.colegiocima.appcima;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Objects;
 
@@ -33,16 +35,23 @@ public class AppcimaApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
+		Calendar calendar = new GregorianCalendar(2008,0,1);
+    	List<Object[]> lista = gradoRepository.buscarIdNivelGrado(calendar.getTime());
+		for (Object[] o: lista ) {
+			System.out.println("ID Colegio: "+o[0] + " ID Grado: " +o[1]);
+		}
+
 		//List<AnioLectivo> lista = anioLectivoRepository.buscarPorActivo();
 		//List<AnioLectivoVista> lista = anioLectivoRepository.findByActivoTrueOrderById();
 
 //		List<AnioLectivoDTO> lista = anioLectivoRepository.findByActivoTrueOrderByDescripcion();
 
-		List<AnioLectivoDTO> lista = anioLectivoRepository.busquedaActivo();
+//		List<AnioLectivoDTO> lista = anioLectivoRepository.busquedaActivo();
+//
+//		for(AnioLectivoDTO item:lista) {
+//			System.out.println("ID: " + item.getId() + " Descripcion: " + item.getDescripcion() );
+//		}
 
-		for(AnioLectivoDTO item:lista) {
-			System.out.println("ID: " + item.getId() + " Descripcion: " + item.getDescripcion() );
-		}
 		/*Grado g = gradoRepository.findByDescripcionAndIdNivelColegio("NATIVE", 1);
 		if(Objects.isNull(g)) {
 			//Short idgrado = gradoRepository.insertar("PRUEBA", (short)1,(short) 26, 12, true);

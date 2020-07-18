@@ -7,6 +7,9 @@ import org.springframework.data.repository.query.Param;
 
 import pe.edu.colegiocima.appcima.models.entity.Grado;
 
+import java.util.Date;
+import java.util.List;
+
 public interface GradoRepository extends CrudRepository<Grado,Long> {
 	
 	public Grado findByDescripcionAndIdNivelColegio(String descripcion, Integer id);
@@ -31,4 +34,7 @@ public interface GradoRepository extends CrudRepository<Grado,Long> {
 	
 	@Query(value = "select * from f_insertagrado(?1,?2,?3,?4,?5)",nativeQuery=true)
 	public Short queryInsertarDML(String vdescripcion, Short vidnivelcolegio, Short vidgrad_ant, Integer vedad, Boolean vactivo);
+
+	@Query(value = "select * from f_listarnivelgrado(?1) ", nativeQuery = true)
+	public List<Object[]> buscarIdNivelGrado(@Param("vfechanacimiento") Date fecha);
 }
