@@ -48,10 +48,10 @@ public class AppcimaApplication
 	public void run(String... args) throws Exception {
 
 
-    	List<AreaAsignaturaCustom> lista = areaAsignaturaRepository.findByOrderByAreaCurricularDescripcion();
-    	List<AreaAsignaturaVista> lista = as
+//    	List<AreaAsignaturaCustom> lista = areaAsignaturaRepository.findByOrderByAreaCurricularDescripcion();
+    	List<AreaAsignaturaVista> lista = areaAsignaturaRepository.findCustomAreaCurricular();
     	lista.forEach((area)->{
-			System.out.println("ID: "+area.getId() + " Area: "+area.getAreaCurricular().getDescripcion() + " Asignatura: "+area.getAsignatura().getDescripcion());
+			System.out.println("ID: "+area.getId() + " Area: "+area.getAreaCurricular() + " Asignatura: "+area.getAsignatura());
 		});
 
 //    	Asignatura asignatura = asignaturaRepository.findById((short) 100).orElse(null);
