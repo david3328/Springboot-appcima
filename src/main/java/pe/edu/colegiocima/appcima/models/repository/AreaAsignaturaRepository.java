@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface AreaAsignaturaRepository extends JpaRepository<AreaAsignatura,Short> {
     @Query("select "
-            + "a.id, "
+            + "a.id as id, "
             + "b.descripcion as areaCurricularDescripcion, "
     + "c.descripcion as asignaturaDescripcion "
     + "from AreaAsignatura a "
