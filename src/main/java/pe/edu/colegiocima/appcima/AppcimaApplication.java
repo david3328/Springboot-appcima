@@ -14,6 +14,7 @@ import pe.edu.colegiocima.appcima.models.dao.GradoDAO;
 import pe.edu.colegiocima.appcima.models.dto.AnioLectivoDTO;
 import pe.edu.colegiocima.appcima.models.dto.projection.AnioLectivoVista;
 import pe.edu.colegiocima.appcima.models.dto.projection.AreaAsignaturaCustom;
+import pe.edu.colegiocima.appcima.models.dto.projection.AreaAsignaturaVista;
 import pe.edu.colegiocima.appcima.models.entity.*;
 import pe.edu.colegiocima.appcima.models.repository.AnioLectivoRepository;
 import pe.edu.colegiocima.appcima.models.repository.AreaAsignaturaRepository;
@@ -48,6 +49,7 @@ public class AppcimaApplication
 
 
     	List<AreaAsignaturaCustom> lista = areaAsignaturaRepository.findByOrderByAreaCurricularDescripcion();
+    	List<AreaAsignaturaVista> lista = as
     	lista.forEach((area)->{
 			System.out.println("ID: "+area.getId() + " Area: "+area.getAreaCurricular().getDescripcion() + " Asignatura: "+area.getAsignatura().getDescripcion());
 		});
