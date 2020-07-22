@@ -13,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import pe.edu.colegiocima.appcima.models.dao.GradoDAO;
 import pe.edu.colegiocima.appcima.models.dto.AnioLectivoDTO;
 import pe.edu.colegiocima.appcima.models.dto.projection.AnioLectivoVista;
+import pe.edu.colegiocima.appcima.models.dto.projection.AreaAsignaturaCustom;
 import pe.edu.colegiocima.appcima.models.entity.*;
 import pe.edu.colegiocima.appcima.models.repository.AnioLectivoRepository;
 import pe.edu.colegiocima.appcima.models.repository.AreaAsignaturaRepository;
@@ -21,7 +22,7 @@ import pe.edu.colegiocima.appcima.models.repository.GradoRepository;
 
 @SpringBootApplication
 public class AppcimaApplication
-//		implements CommandLineRunner
+		implements CommandLineRunner
 {
 	@Autowired
 	private GradoRepository gradoRepository;
@@ -33,7 +34,7 @@ public class AppcimaApplication
 	private GradoDAO gradoDAO;
 
 	@Autowired
-	private AreaAsignaturaRepository repository;
+	private AreaAsignaturaRepository areaAsignaturaRepository;
 
 	@Autowired
 	private AsignaturaRepository asignaturaRepository;
@@ -42,8 +43,14 @@ public class AppcimaApplication
         SpringApplication.run(AppcimaApplication.class, args);
     }
 
-//	@Override
+	@Override
 	public void run(String... args) throws Exception {
+
+
+    	List<AreaAsignaturaCustom> lista = areaAsignaturaRepository.findByOrderByAreaCurricularDescripcion();
+    	lista.forEach((area)->{
+			System.out.println("ID: "+area.getId() + " Area: "+area.getAreaCurricular().getDescripcion() + " Asignatura: "+area.getAsignatura().getDescripcion());
+		});
 
 //    	Asignatura asignatura = asignaturaRepository.findById((short) 100).orElse(null);
 //		System.out.println("listo");
