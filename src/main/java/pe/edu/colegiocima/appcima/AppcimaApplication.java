@@ -23,7 +23,7 @@ import pe.edu.colegiocima.appcima.models.repository.GradoRepository;
 
 @SpringBootApplication
 public class AppcimaApplication
-		implements CommandLineRunner
+		//implements CommandLineRunner
 {
 	@Autowired
 	private GradoRepository gradoRepository;
@@ -44,15 +44,15 @@ public class AppcimaApplication
         SpringApplication.run(AppcimaApplication.class, args);
     }
 
-	@Override
+	//@Override
 	public void run(String... args) throws Exception {
 
 
 //    	List<AreaAsignaturaCustom> lista = areaAsignaturaRepository.findByOrderByAreaCurricularDescripcion();
-    	List<AreaAsignaturaVista> lista = areaAsignaturaRepository.findCustomAreaCurricular();
-    	lista.forEach((area)->{
-			System.out.println("ID: "+area.getId() + " Area: "+area.getAreaCurricular() + " Asignatura: "+area.getAsignatura());
-		});
+//    	List<AreaAsignaturaVista> lista = areaAsignaturaRepository.findCustomAreaCurricular();
+//    	lista.forEach((area)->{
+//			System.out.println("ID: "+area.getId() + " Area: "+area.getAreaCurricular() + " Asignatura: "+area.getAsignatura());
+//		});
 
 //    	Asignatura asignatura = asignaturaRepository.findById((short) 100).orElse(null);
 //		System.out.println("listo");

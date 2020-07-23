@@ -20,4 +20,7 @@ public class AreaAsignaturaController {
     public ResponseEntity<?> listar(){
         return ResponseEntity.ok(service.findAll());
     }
+
+    @GetMapping("/listar-formulario")
+    public ResponseEntity<?> listarCustom(){ return ResponseEntity.ok(service.findCustomAreaAsignatura());}
 }
