@@ -13,6 +13,7 @@ import pe.edu.colegiocima.appcima.models.dto.AnioLectivoDTO;
 import pe.edu.colegiocima.appcima.models.dto.projection.AnioLectivoVista;
 import pe.edu.colegiocima.appcima.models.dto.projection.AreaAsignaturaCustom;
 import pe.edu.colegiocima.appcima.models.dto.projection.AreaAsignaturaVista;
+import pe.edu.colegiocima.appcima.models.dto.udt.CargaHorariaUDT;
 import pe.edu.colegiocima.appcima.models.entity.*;
 import pe.edu.colegiocima.appcima.models.repository.AnioLectivoRepository;
 import pe.edu.colegiocima.appcima.models.repository.AreaAsignaturaRepository;
@@ -48,11 +49,23 @@ public class AppcimaApplication
 	@Override
 	public void run(String... args) throws Exception {
 
-    	int size = 5;
-    	Short[] idDocente = {4155,3821,1077,550,981};
-    	Short[] idGradoSeccion = {905,902,906,907,908};
-    	Integer item = cargaHorariaDAO.generar((short) 1,(short) 4622,idDocente,idGradoSeccion,(short) 1045, size);
+    	List<CargaHorariaUDT> lista = Arrays.asList(
+    			new CargaHorariaUDT((short) 4155,(short)905),
+				new CargaHorariaUDT((short) 3821,(short)902),
+				new CargaHorariaUDT((short) 1077,(short)906),
+				new CargaHorariaUDT((short) 550,(short)907),
+				new CargaHorariaUDT((short) 981,(short)908)
+		);
+    	CargaHorariaUDT[] cargaHoraria = new CargaHorariaUDT[lista.size()];
+    	cargaHoraria = lista.toArray(cargaHoraria);
+    	Integer item = cargaHorariaDAO.generar((short) 1,(short) 4622,cargaHoraria,(short)1045);
 		System.out.println("Respuesta: " + item);
+
+//    	int size = 5;
+//    	Short[] idDocente = {4155,3821,1077,550,981};
+//    	Short[] idGradoSeccion = {905,902,906,907,908};
+//    	Integer item = cargaHorariaDAO.generar((short) 1,(short) 4622,idDocente,idGradoSeccion,(short) 1045, size);
+//		System.out.println("Respuesta: " + item);
 
 //    	List<String> lista = Arrays.asList("LUIS","BACA","ALEX","DAVID","PIO","BRAYAN");
 //    	for (String nombre : lista){
