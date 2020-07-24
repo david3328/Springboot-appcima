@@ -20,7 +20,7 @@ public class CargaHorariaDAOImpl implements CargaHorariaDAO{
         try{
             session.getTransaction().begin();
             Integer respuesta = session.doReturningWork(cnx->{
-                PreparedStatement ps = cnx.prepareStatement("select f_insertarcargahoraria(?,?,?,?,?,?)");
+                PreparedStatement ps = cnx.prepareStatement("select f_insertacargahoraria(?,?,?,?,?,?)");
                 int index = 0;
                 ps.setObject(++index,bimestre, Types.SMALLINT);
                 ps.setObject(++index,idPlanEstudio,Types.SMALLINT);
@@ -60,7 +60,7 @@ public class CargaHorariaDAOImpl implements CargaHorariaDAO{
         try{
             session.getTransaction().begin();
             Integer respuesta = session.doReturningWork(cnx->{
-                PreparedStatement ps = cnx.prepareStatement("select f_insertarcargahoraria(?,?,?,?)");
+                PreparedStatement ps = cnx.prepareStatement("select f_insertacargahoraria(?,?,?,?)");
                 int index = 0;
                 ps.setObject(++index,bimestre, Types.SMALLINT);
                 ps.setObject(++index,idPlanEstudio,Types.SMALLINT);
