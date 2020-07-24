@@ -1,6 +1,7 @@
 package pe.edu.colegiocima.appcima.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -26,10 +27,11 @@ public class GradoController {
     @Autowired
     private GradoService service;
 
-    @GetMapping("/nivel-colegio/{id}")    
-    @ApiOperation(value = "Listar grados por Nivel de Colegio")
-    public ResponseEntity<?> listarPorNivelColegio(@PathVariable Integer id){
-    	return ResponseEntity.ok(service.findByIdNivelColegioOrderByDescripcion(id));
+    @GetMapping("/nivel-colegio/{id}/pagina")
+    @ApiOperation(value = "Listar grados y paginado por Nivel de Colegio")
+    public ResponseEntity<?> listarPorNivelColegio(@PathVariable Integer id, Pageable pageable){
+
+    	return ResponseEntity.ok(service.findByIdNivelColegioOrderByDescripcion(id,pageable));
     }
     
     @GetMapping()

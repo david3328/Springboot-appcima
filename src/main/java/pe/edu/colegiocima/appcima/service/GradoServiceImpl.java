@@ -1,6 +1,8 @@
 package pe.edu.colegiocima.appcima.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pe.edu.colegiocima.appcima.models.entity.Grado;
@@ -36,7 +38,7 @@ public class GradoServiceImpl implements GradoService {
     public Grado save(Grado grado) { return repository.save(grado); }
 
 	@Override
-	public Iterable<Grado> findByIdNivelColegioOrderByDescripcion(Integer idNivelColegio) {
-		return repository.findByIdNivelColegioOrderByDescripcion(idNivelColegio);
+	public Page<Grado> findByIdNivelColegioOrderByDescripcion(Integer idNivelColegio, Pageable pageable) {
+		return repository.findByIdNivelColegioOrderByDescripcion(idNivelColegio, pageable);
 	}
 }

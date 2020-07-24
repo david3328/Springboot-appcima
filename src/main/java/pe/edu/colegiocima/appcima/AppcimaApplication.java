@@ -22,7 +22,7 @@ import pe.edu.colegiocima.appcima.models.repository.GradoRepository;
 
 @SpringBootApplication
 public class AppcimaApplication
-		implements CommandLineRunner
+		//implements CommandLineRunner
 {
 	@Autowired
 	private GradoRepository gradoRepository;
@@ -46,20 +46,20 @@ public class AppcimaApplication
         SpringApplication.run(AppcimaApplication.class, args);
     }
 
-	@Override
+	//@Override
 	public void run(String... args) throws Exception {
 
-    	List<CargaHorariaUDT> lista = Arrays.asList(
-    			new CargaHorariaUDT((short) 4155,(short)905),
-				new CargaHorariaUDT((short) 3821,(short)902),
-				new CargaHorariaUDT((short) 1077,(short)906),
-				new CargaHorariaUDT((short) 550,(short)907),
-				new CargaHorariaUDT((short) 981,(short)908)
-		);
-    	CargaHorariaUDT[] cargaHoraria = new CargaHorariaUDT[lista.size()];
-    	cargaHoraria = lista.toArray(cargaHoraria);
-    	Integer item = cargaHorariaDAO.generar((short) 1,(short) 4622,cargaHoraria,(short)1045);
-		System.out.println("Respuesta: " + item);
+//    	List<CargaHorariaUDT> lista = Arrays.asList(
+//    			new CargaHorariaUDT((short) 4155,(short)905),
+//				new CargaHorariaUDT((short) 3821,(short)902),
+//				new CargaHorariaUDT((short) 1077,(short)906),
+//				new CargaHorariaUDT((short) 550,(short)907),
+//				new CargaHorariaUDT((short) 981,(short)908)
+//		);
+//    	CargaHorariaUDT[] cargaHoraria = new CargaHorariaUDT[lista.size()];
+//    	cargaHoraria = lista.toArray(cargaHoraria);
+//    	Integer item = cargaHorariaDAO.generar((short) 1,(short) 4622,cargaHoraria,(short)1045);
+//		System.out.println("Respuesta: " + item);
 
 //    	int size = 5;
 //    	Short[] idDocente = {4155,3821,1077,550,981};

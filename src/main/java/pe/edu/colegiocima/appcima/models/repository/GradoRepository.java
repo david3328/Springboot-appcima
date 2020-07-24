@@ -1,8 +1,11 @@
 package pe.edu.colegiocima.appcima.models.repository;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 
 import pe.edu.colegiocima.appcima.models.entity.Grado;
@@ -10,11 +13,11 @@ import pe.edu.colegiocima.appcima.models.entity.Grado;
 import java.util.Date;
 import java.util.List;
 
-public interface GradoRepository extends CrudRepository<Grado,Long> {
+public interface GradoRepository extends PagingAndSortingRepository<Grado,Long> {
 	
 	public Grado findByDescripcionAndIdNivelColegio(String descripcion, Integer id);
 	
-	public Iterable<Grado> findByIdNivelColegioOrderByDescripcion(Integer idNivelColegio);
+	public Page<Grado> findByIdNivelColegioOrderByDescripcion(Integer idNivelColegio, Pageable page);
 	
 	@Query("select g from Grado g where g.idNivelColegio = ?1 order by g.descripcion")
 	public Iterable<Grado> findCustom(Integer id);
