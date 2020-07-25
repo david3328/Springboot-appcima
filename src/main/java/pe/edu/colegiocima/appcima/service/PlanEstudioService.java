@@ -1,5 +1,7 @@
 package pe.edu.colegiocima.appcima.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import pe.edu.colegiocima.appcima.models.dto.projection.PlanEstudioVista;
 import pe.edu.colegiocima.appcima.models.entity.PlanEstudio;
 
@@ -12,4 +14,5 @@ public interface PlanEstudioService {
     public void deleteById(Short id);
     public Iterable<PlanEstudioVista> findCustom();
     public List<PlanEstudio> busquedaPersonalizada(Short idAnioLectivo, Short idGrado);
+    public Page<PlanEstudio> busquedaPlanEstudio(Short idAnioLectivo, Short idGrado, Pageable pageable);
 }

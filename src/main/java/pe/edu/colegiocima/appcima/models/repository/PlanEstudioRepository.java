@@ -30,4 +30,9 @@ public interface PlanEstudioRepository  extends PagingAndSortingRepository<PlanE
 
     @Query(value = "select * from v_listaplanestudio where idannolectivo = ?1 and idgrado = ?2", nativeQuery = true)
     public List<Map<String,Object>> busquedaPersonalizada(Short idAnioLectivo, Short idGrado);
+
+    @Query(value = "select * from v_listaplanestudio where idannolectivo = ?1 and idgrado = ?2",
+            countQuery = "select count(*) from v_listaplanestudio where idannolectivo = ?1 and idgrado = ?2",
+            nativeQuery = true)
+    public Page<Map<String,Object>> busquedaPersonalizada(Short idAnioLectivo, Short idGrado, Pageable pageable);
 }

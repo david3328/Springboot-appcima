@@ -4,6 +4,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -47,9 +48,17 @@ public class PlanEstudioController {
     }
 
     @GetMapping("/aniolectivo/{idAnioLectivo}/grado/{idGrado}")
+    @ApiOperation(value = "Obtener los Planes de Estudio de la vista")
     public ResponseEntity<?> listarVista(@ApiParam(value = "Identificador del Anio Lectivo") @PathVariable Short idAnioLectivo,
                                          @ApiParam(value = "Identificador del Grado") @PathVariable Short idGrado){
         return ResponseEntity.ok(planEstudioService.busquedaPersonalizada(idAnioLectivo,idGrado));
+    }
+
+    @GetMapping("/aniolectivo/{idAnioLectivo}/grado/{idGrado}/pagina")
+    @ApiOperation(value = "Obtener los Planes de Estudio de la vista")
+    public ResponseEntity<?> listarVista(@ApiParam(value = "Identificador del Anio Lectivo") @PathVariable Short idAnioLectivo,
+                                         @ApiParam(value = "Identificador del Grado") @PathVariable Short idGrado, Pageable pageable){
+        return ResponseEntity.ok(planEstudioService.busquedaPlanEstudio(idAnioLectivo,idGrado,pageable));
     }
 
     @PostMapping()
