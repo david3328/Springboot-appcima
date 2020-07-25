@@ -46,6 +46,12 @@ public class PlanEstudioController {
         return ResponseEntity.ok(planEstudioService.findById(id));
     }
 
+    @GetMapping("/aniolectivo/{idAnioLectivo}/grado/{idGrado}")
+    public ResponseEntity<?> listarVista(@ApiParam(value = "Identificador del Anio Lectivo") @PathVariable Short idAnioLectivo,
+                                         @ApiParam(value = "Identificador del Grado") @PathVariable Short idGrado){
+        return ResponseEntity.ok(planEstudioService.busquedaPersonalizada(idAnioLectivo,idGrado));
+    }
+
     @PostMapping()
     @ApiOperation(value = "Crear un nuevo plan de estudio")
     public ResponseEntity<?> crear(@Valid @RequestBody @ApiParam(value = "Estructura del modelo Plan de Estudio") PlanEstudio planEstudio, BindingResult result){
