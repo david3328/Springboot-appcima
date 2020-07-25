@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import pe.edu.colegiocima.appcima.models.dao.CargaHorariaDAO;
 import pe.edu.colegiocima.appcima.models.dao.GradoDAO;
+import pe.edu.colegiocima.appcima.models.dao.PlanEstudioDAO;
 import pe.edu.colegiocima.appcima.models.dto.AnioLectivoDTO;
 import pe.edu.colegiocima.appcima.models.dto.projection.AnioLectivoVista;
 import pe.edu.colegiocima.appcima.models.dto.projection.AreaAsignaturaCustom;
@@ -22,7 +23,7 @@ import pe.edu.colegiocima.appcima.models.repository.GradoRepository;
 
 @SpringBootApplication
 public class AppcimaApplication
-		//implements CommandLineRunner
+		implements CommandLineRunner
 {
 	@Autowired
 	private GradoRepository gradoRepository;
@@ -42,12 +43,19 @@ public class AppcimaApplication
 	@Autowired
 	private CargaHorariaDAO cargaHorariaDAO;
 
+	@Autowired
+	private PlanEstudioDAO planEstudioDAO;
+
     public static void main(String[] args) {
         SpringApplication.run(AppcimaApplication.class, args);
     }
 
-	//@Override
+	@Override
 	public void run(String... args) throws Exception {
+    	List<PlanEstudio> lista = planEstudioDAO.busquedaPersonalizada((short) 52, (short) 5 );
+    	lista.forEach(e->{
+			System.out.println("ID: "+ e.getId() + " descripcion: " +e.getAnioLectivo().getDescripcion() + " grado: " + e.getGrado().getDescripcion());
+		});
 
 //    	List<CargaHorariaUDT> lista = Arrays.asList(
 //    			new CargaHorariaUDT((short) 4155,(short)905),

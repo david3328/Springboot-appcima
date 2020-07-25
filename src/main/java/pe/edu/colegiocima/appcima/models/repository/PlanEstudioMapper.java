@@ -39,7 +39,6 @@ public class PlanEstudioMapper {
                         .descripcion(descripcionAsignatura)
                         .build())
                 .build());
-        oMapper.setHoras(horas);
         return oMapper;
     }
 }
