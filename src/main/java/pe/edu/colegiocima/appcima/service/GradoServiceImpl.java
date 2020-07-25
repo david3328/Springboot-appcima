@@ -23,13 +23,13 @@ public class GradoServiceImpl implements GradoService {
 
     @Override
     @Transactional
-    public void deleteById(Long id) {
+    public void deleteById(Short id) {
         repository.deleteById(id);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Grado findById(Long id) {
+    public Grado findById(Short id) {
         return repository.findById(id).orElse(null);
     }
 

@@ -13,7 +13,7 @@ import pe.edu.colegiocima.appcima.models.entity.Grado;
 import java.util.Date;
 import java.util.List;
 
-public interface GradoRepository extends PagingAndSortingRepository<Grado,Long> {
+public interface GradoRepository extends PagingAndSortingRepository<Grado,Short> {
 	
 	public Grado findByDescripcionAndIdNivelColegio(String descripcion, Integer id);
 	

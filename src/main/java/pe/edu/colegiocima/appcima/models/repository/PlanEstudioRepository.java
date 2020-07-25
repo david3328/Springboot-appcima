@@ -9,6 +9,7 @@ import pe.edu.colegiocima.appcima.models.entity.Grado;
 import pe.edu.colegiocima.appcima.models.entity.PlanEstudio;
 
 import java.util.List;
+import java.util.Map;
 
 public interface PlanEstudioRepository  extends PagingAndSortingRepository<PlanEstudio,Short> {
     @Query("select " +
@@ -27,6 +28,6 @@ public interface PlanEstudioRepository  extends PagingAndSortingRepository<PlanE
     public List<PlanEstudioVista> findCustomPlanEstudio();
     public Page<PlanEstudio> findAll(Pageable pageable);
 
-    @Query(value = "", nativeQuery = true)
-    public List<T> busquedaPersonalizada(Short idAnioLectivo, Short idGrado);
+    @Query(value = "select * from v_listaplanestudio where idannolectivo = ?1 and idgrado = ?2", nativeQuery = true)
+    public List<Map<String,Object>> busquedaPersonalizada(Short idAnioLectivo, Short idGrado);
 }

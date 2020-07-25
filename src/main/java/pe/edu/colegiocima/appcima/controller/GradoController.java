@@ -59,7 +59,7 @@ public class GradoController {
     		@ApiParam(value = "Estructura del modelo Grado Academico")
     		Grado grado, BindingResult result, 
     		@ApiParam(value = "Identificador del Grado Academico")
-    		@PathVariable Long id){
+    		@PathVariable Short id){
        
     	if(result.hasErrors()) {
     		return this.validar(result);
@@ -85,7 +85,7 @@ public class GradoController {
 @ApiOperation(value = "Elimina un registro del Grado Academico")
     public ResponseEntity<?> eliminar(
     		@ApiParam(value = "Identificador del Grado Academico", required = true, example = "16")
-    		@PathVariable Long id){
+    		@PathVariable Short id){
         service.deleteById(id);
         return ResponseEntity.noContent().build();
     }

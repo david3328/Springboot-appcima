@@ -13,7 +13,7 @@ import io.swagger.annotations.ApiModelProperty;
 public class Grado{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Short id;
 
     @Size(max = 8)
     @ApiModelProperty(name = "Breve descripcion de grado con un máximo de 8 caracteres", notes = "Breve descripcion de grado con un máximo de 8 caracteres")
@@ -38,11 +38,11 @@ public class Grado{
 
     public Grado() {}
 
-    public Long getId() {
+    public Short getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Short id) {
         this.id = id;
     }
 
