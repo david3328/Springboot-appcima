@@ -2,6 +2,7 @@ package pe.edu.colegiocima.appcima.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.colegiocima.appcima.models.dto.projection.PlanEstudioVista;
 import pe.edu.colegiocima.appcima.models.entity.PlanEstudio;
 import pe.edu.colegiocima.appcima.models.repository.PlanEstudioRepository;
 
@@ -28,5 +29,10 @@ public class PlanEstudioServiceImpl implements PlanEstudioService{
     @Override
     public void deleteById(Short id) {
         planEstudioRepository.deleteById(id);
+    }
+
+    @Override
+    public Iterable<PlanEstudioVista> findCustom() {
+        return planEstudioRepository.findCustomPlanEstudio();
     }
 }

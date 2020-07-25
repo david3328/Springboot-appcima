@@ -34,6 +34,12 @@ public class PlanEstudioController {
         return ResponseEntity.ok(planEstudioService.findAll());
     }
 
+    @GetMapping("/listar")
+    @ApiOperation(value = "Listar Plan de Estudio con Descripciones de Anio Lectivo, Grado, Area y Asignatura")
+    public  ResponseEntity<?> listarCustom(){
+        return ResponseEntity.ok(planEstudioService.findCustom());
+    }
+
     @GetMapping("/{id}")
     @ApiOperation(value = "Obtener un plan de estudio según su ID")
     public ResponseEntity<?> listarPorId(@ApiParam(value = "Identificador del Plan de Estudio") @PathVariable Short id){
@@ -72,7 +78,7 @@ public class PlanEstudioController {
         planEstudioDB.setAnioLectivo(oAnioLectivo);
         planEstudioDB.setAreaAsignatura(oAreaAsignatura);
         planEstudioDB.setGrado(oGrado);
-        planEstudio.setHoras(planEstudio.getHoras());
+        planEstudioDB.setHoras(planEstudio.getHoras());
 
         return ResponseEntity.status(HttpStatus.CREATED).body(planEstudioService.save(planEstudioDB));
     }
