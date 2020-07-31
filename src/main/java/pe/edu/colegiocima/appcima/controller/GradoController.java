@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +20,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @RestController(value = "grado")
 @RequestMapping("/grado")
@@ -26,6 +29,9 @@ import java.util.Objects;
 public class GradoController {
     @Autowired
     private GradoService service;
+    //Log Estandar de Java: JUL -> Java Util Logging
+    private static final Logger log = Logger.getLogger(GradoController.class.getName());
+
 
     @GetMapping("/nivel-colegio/{id}/pagina")
     @ApiOperation(value = "Listar grados y paginado por Nivel de Colegio")
@@ -36,7 +42,9 @@ public class GradoController {
     
     @GetMapping()
     @ApiOperation(value = "Lista todos los grados")
+    @PreAuthorize("hasRole('ROLE_DIRECTOR')")
     public ResponseEntity<?> listar(){
+        log.log(Level.FINE,"Antes de listar grados");
         return ResponseEntity.ok(service.findAll());
     }
     
@@ -55,6 +63,7 @@ public class GradoController {
 
     @PutMapping("/{id}")
     @ApiOperation(value = "Editar un registro del grado academico")
+    @PreAuthorize("hasRole('ROLE_TECNOLOGÍA DE INFORMACIÓN (SISTEMAS)')")
     public ResponseEntity<?> editar(@Valid @RequestBody 
     		@ApiParam(value = "Estructura del modelo Grado Academico")
     		Grado grado, BindingResult result, 

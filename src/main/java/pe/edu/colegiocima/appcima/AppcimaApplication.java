@@ -23,7 +23,7 @@ import pe.edu.colegiocima.appcima.models.repository.GradoRepository;
 
 @SpringBootApplication
 public class AppcimaApplication
-		implements CommandLineRunner
+		//implements CommandLineRunner
 {
 	@Autowired
 	private GradoRepository gradoRepository;
@@ -50,12 +50,12 @@ public class AppcimaApplication
         SpringApplication.run(AppcimaApplication.class, args);
     }
 
-	@Override
+	//@Override
 	public void run(String... args) throws Exception {
-    	List<PlanEstudio> lista = planEstudioDAO.busquedaPersonalizada((short) 52, (short) 5 );
-    	lista.forEach(e->{
-			System.out.println("ID: "+ e.getId() + " descripcion: " +e.getAnioLectivo().getDescripcion() + " grado: " + e.getGrado().getDescripcion());
-		});
+//    	List<PlanEstudio> lista = planEstudioDAO.busquedaPersonalizada((short) 52, (short) 5 );
+//    	lista.forEach(e->{
+//			System.out.println("ID: "+ e.getId() + " descripcion: " +e.getAnioLectivo().getDescripcion() + " grado: " + e.getGrado().getDescripcion());
+//		});
 
 //    	List<CargaHorariaUDT> lista = Arrays.asList(
 //    			new CargaHorariaUDT((short) 4155,(short)905),
