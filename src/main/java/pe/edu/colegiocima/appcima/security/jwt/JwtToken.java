@@ -15,7 +15,7 @@ import java.util.function.Function;
 @Component
 public class JwtToken {
     public static final long JWT_TOKEN_VALIDITY = 5*60*60;
-    @Value("${appcima.jwt.secret}")
+    @Value("$cima123")
     private String secret;
 
     public String getUsernameFromToken(String token){

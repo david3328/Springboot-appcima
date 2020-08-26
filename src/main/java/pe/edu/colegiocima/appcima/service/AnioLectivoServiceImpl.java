@@ -38,4 +38,9 @@ public class AnioLectivoServiceImpl implements AnioLectivoService{
         log.info("Service: Listar año lectivo");
         return anioLectivoRepository.busquedaActivo();
     }
+
+    @Override
+    public void deleteById(Short id) {
+
+    }
 }

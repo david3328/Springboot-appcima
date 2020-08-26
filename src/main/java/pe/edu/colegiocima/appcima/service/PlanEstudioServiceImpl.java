@@ -14,6 +14,7 @@ import pe.edu.colegiocima.appcima.models.repository.PlanEstudioRepository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class PlanEstudioServiceImpl implements PlanEstudioService{
@@ -29,8 +30,8 @@ public class PlanEstudioServiceImpl implements PlanEstudioService{
     }
 
     @Override
-    public PlanEstudio findById(Short id) {
-        return planEstudioRepository.findById(id).get();
+    public Optional<PlanEstudio> findById(Short id) {
+        return planEstudioRepository.findById(id);
     }
 
     @Override

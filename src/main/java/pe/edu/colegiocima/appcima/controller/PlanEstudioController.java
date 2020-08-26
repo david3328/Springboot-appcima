@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.colegiocima.appcima.exception.EntityNotFoundException;
 import pe.edu.colegiocima.appcima.models.entity.AnioLectivo;
 import pe.edu.colegiocima.appcima.models.entity.AreaAsignatura;
 import pe.edu.colegiocima.appcima.models.entity.Grado;
@@ -41,11 +42,11 @@ public class PlanEstudioController {
         return ResponseEntity.ok(planEstudioService.findCustom());
     }
 
-    @GetMapping("/{id}")
-    @ApiOperation(value = "Obtener un plan de estudio según su ID")
-    public ResponseEntity<?> listarPorId(@ApiParam(value = "Identificador del Plan de Estudio") @PathVariable Short id){
-        return ResponseEntity.ok(planEstudioService.findById(id));
-    }
+//    @GetMapping("/{id}")
+//    @ApiOperation(value = "Obtener un plan de estudio según su ID")
+//    public ResponseEntity<?> listarPorId(@ApiParam(value = "Identificador del Plan de Estudio") @PathVariable Short id){
+//        return ResponseEntity.ok(planEstudioService.findById(id));
+//    }
 
     @GetMapping("/aniolectivo/{idAnioLectivo}/grado/{idGrado}")
     @ApiOperation(value = "Obtener los Planes de Estudio de la vista")
@@ -79,7 +80,7 @@ public class PlanEstudioController {
             return this.validar(result);
         }
 
-        PlanEstudio pE = planEstudioService.findById(id);
+        PlanEstudio pE = planEstudioService.findById(id).orElse(null);
 
         if(Objects.isNull(pE)){
             return ResponseEntity.notFound().build();
@@ -103,6 +104,16 @@ public class PlanEstudioController {
     public ResponseEntity<?> eliminar(@ApiParam(value = "Identificador del Plan de Estudio") @PathVariable Short id){
         planEstudioService.deleteById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @RequestMapping(value="/{id}", method = RequestMethod.GET)
+    @ApiOperation(value = "Ver plan de estudio")
+    public ResponseEntity<?> ver(
+            @PathVariable
+            @ApiParam(value = "Identificador del plan estudio",required = true,example = "16")
+                    Short id) {
+        PlanEstudio oPlanEstudio = planEstudioService.findById(id).orElseThrow(() -> new EntityNotFoundException(PlanEstudio.class,"id",id.toString()));
+        return ResponseEntity.ok(oPlanEstudio);
     }
 
     private ResponseEntity<?> validar(BindingResult result){

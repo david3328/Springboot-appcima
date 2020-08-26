@@ -49,7 +49,7 @@ public class GradoController {
     }
     
 
-    @PostMapping()
+    @PostMapping(consumes = "application/json", produces = "application/json")
     @ApiOperation(value = "Crear un nuevo registro del grado academico")
     public ResponseEntity<?> crear(@Valid @RequestBody 
     		@ApiParam(value = "Estructura del modelo Grado Academico")

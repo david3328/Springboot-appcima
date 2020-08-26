@@ -9,4 +9,5 @@ public interface AnioLectivoService {
     public Iterable<AnioLectivo> findAll();
     public AnioLectivo findById(Short id);
     public List<AnioLectivoDTO> findActive();
+    public void deleteById(Short id);
 }

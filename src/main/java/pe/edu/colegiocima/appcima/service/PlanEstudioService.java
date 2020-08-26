@@ -6,10 +6,11 @@ import pe.edu.colegiocima.appcima.models.dto.projection.PlanEstudioVista;
 import pe.edu.colegiocima.appcima.models.entity.PlanEstudio;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface PlanEstudioService {
     public Iterable<PlanEstudio> findAll();
-    public PlanEstudio findById(Short id);
+    public Optional<PlanEstudio> findById(Short id);
     public PlanEstudio save(PlanEstudio planEstudio);
     public void deleteById(Short id);
     public Iterable<PlanEstudioVista> findCustom();
